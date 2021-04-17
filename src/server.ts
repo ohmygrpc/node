@@ -4,7 +4,7 @@ import { echoV1ServiceDefinition } from './grpc';
 import { healthCheck } from './handlers/healthCheck';
 import { echo } from './handlers/echo';
 
-export class PlaywrightworkerGrpcServer {
+export class EchoServiceGrpcServer {
   private server: Server = new Server();
 
   constructor() {

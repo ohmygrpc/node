@@ -1,8 +1,8 @@
 import { settings } from './config';
-import { PlaywrightworkerGrpcServer } from './server';
+import { EchoServiceGrpcServer } from './server';
 
 function main(): void {
-  const server = new PlaywrightworkerGrpcServer();
+  const server = new EchoServiceGrpcServer();
   server.start(settings.get('grpcServerPort'));
 }
 
