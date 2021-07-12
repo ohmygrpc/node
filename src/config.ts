@@ -7,7 +7,11 @@ function getEnv(key: string, defaultValue: string): string {
 }
 
 function mustAtoi(s: string): number {
-  return parseInt(s, 10);
+  const i = parseInt(s, 10);
+  if (Number.isNaN(i)) {
+    throw new Error(`invalid numeric value: ${s}`);
+  }
+  return i;
 }
 
 export const settings: Map<string, any> = new Map<string, any>([
