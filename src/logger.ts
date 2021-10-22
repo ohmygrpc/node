@@ -11,7 +11,7 @@ export interface Logger {
   debug: (msg: Message) => void;
   info: (msg: Message) => void;
   warn: (msg: Message) => void;
-  error: (msg: Error) => void;
+  error: (msg: Message | Error) => void;
 }
 
 const toJsonFormattedOneLineText = (
@@ -43,16 +43,14 @@ export const ConsoleLogger: () => Logger = () => {
     warn: (msg: Message): void => {
       log(toJsonFormattedOneLineText(msg, { level: LogLevel.WARN }));
     },
-    error: (err: Error): void => {
-      log(
-        toJsonFormattedOneLineText(
-          {
-            message: err.message,
-            stacktrace: err.stack,
-          },
-          { level: LogLevel.ERROR },
-        ),
-      );
+    error: (msg: Message | Error): void => {
+      if (msg instanceof Error) {
+        msg = {
+          message: msg.message,
+          stacktrace: msg.stack,
+        };
+      }
+      log(toJsonFormattedOneLineText(msg, { level: LogLevel.ERROR }));
     },
   };
 };
