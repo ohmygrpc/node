@@ -1,34 +1,18 @@
-import { Server, ServerCredentials } from '@grpc/grpc-js';
+import Mali from 'mali';
+import { EchoServiceService } from '@idl/echo/v1/echo';
+import * as handlers from './handlers';
+import { Logger } from './logger';
+import { AppContext } from './types';
 
-import { echoV1ServiceDefinition } from './grpc';
-import { healthCheck } from './handlers/healthCheck';
-import { echo } from './handlers/echo';
+export const initializeGrpcServer = (logger: Logger): Mali<AppContext> => {
+  const app = new Mali<AppContext>(EchoServiceService, 'EchoService');
+  app.context = {
+    logger,
+  };
 
-export class EchoServiceGrpcServer {
-  private server: Server = new Server();
+  app.use(handlers);
 
-  constructor() {
-    // eslint-disable-next-line
-    // @ts-ignore
-    this.server.addService(echoV1ServiceDefinition, {
-      healthCheck: healthCheck,
-      echo: echo,
-    });
-  }
+  app.on('error', logger.error);
 
-  start(port: string): void {
-    console.log('starting server...');
-
-    this.server.bindAsync(
-      `0.0.0.0:${port}`,
-      ServerCredentials.createInsecure(),
-      (err) => {
-        if (err) {
-          throw err;
-        }
-
-        this.server.start();
-      },
-    );
-  }
-}
+  return app;
+};

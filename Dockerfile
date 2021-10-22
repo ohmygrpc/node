@@ -12,7 +12,6 @@ RUN git init
 
 RUN npm ci
 RUN npm run idl:init
-RUN npm run clean
 COPY . .
 RUN npm run build
 

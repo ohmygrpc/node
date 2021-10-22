@@ -1,14 +1,8 @@
-import {
-  sendUnaryData,
-  ServerUnaryCall,
-} from '@grpc/grpc-js/build/src/server-call';
+import { HealthCheckRequest, HealthCheckResponse } from '@idl/echo/v1/echo';
+import { Context } from '../types';
 
-type HealthCheckRequestType = never;
-type HealthCheckResponseType = never;
-
-export function healthCheck(
-  call: ServerUnaryCall<HealthCheckRequestType, HealthCheckResponseType>,
-  callback: sendUnaryData<HealthCheckResponseType>,
-) {
-  callback(null, null);
+export async function healthCheck(
+  ctx: Context<HealthCheckRequest, HealthCheckResponse>,
+): Promise<void> {
+  ctx.res = {};
 }

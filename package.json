@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "gRPC node.js server boilerplate",
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "tsc --build tsconfig.json",
-    "clean": "rm -rf dist",
-    "start": "node dist/main.js",
-    "start:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' 'src/main.ts'",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' 'src/index.ts'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint '{src,test}/**/*.ts'",
     "format": "eslint '{src,test}/**/*.ts' --fix",
@@ -17,9 +17,14 @@
   },
   "keywords": [],
   "author": "Taeho Kim <taeho@taeho.io>",
+  "_moduleAliases": {
+    "@idl": "dist/__proto__/services"
+  },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.8",
-    "@grpc/proto-loader": "^0.5.6"
+    "@grpc/proto-loader": "^0.5.6",
+    "mali": "^0.44.4",
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
