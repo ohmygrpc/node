@@ -11,7 +11,9 @@
     "lint": "eslint '{src,test}/**/*.ts'",
     "format": "eslint '{src,test}/**/*.ts' --fix",
     "idl:init": "git submodule update --init",
-    "idl:update": "git submodule update --remote --merge"
+    "idl:update": "git submodule update --remote --merge",
+    "pregenerate:idl": "docker build . -f Dockerfile.buf -t ohmygrpc/buf:local",
+    "generate:idl": "docker run --volume `pwd`:/go/src/github.com/ohmygrpc/node --workdir /go/src/github.com/ohmygrpc/node ohmygrpc/buf:local generate idl"
   },
   "keywords": [],
   "author": "Taeho Kim <taeho@taeho.io>",

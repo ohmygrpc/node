@@ -1,0 +1,14 @@
+version: v1beta1
+plugins:
+  - name: ts_proto
+    out: src/__generated__
+    opt:
+      - outputEncodeMethods=true
+      - outputJsonMethods=false
+      - outputClientImpl=false
+      - useOptionals=true
+      - unrecognizedEnum=false
+      - stringEnums=true
+      - forceLong=string
+      - outputServices=grpc-js
+      - esModuleInterop=true
