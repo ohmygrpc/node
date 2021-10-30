@@ -11,8 +11,8 @@ RUN git config --global url."https://${GH_ACCESS_TOKEN}@github.com/".insteadOf "
 RUN git init
 
 RUN npm ci
-RUN npm run idl:init
 COPY . .
+RUN npm run idl:init
 RUN npm run build
 
 
@@ -25,7 +25,6 @@ WORKDIR /${SERVICE_NAME}
 COPY package*.json ./
 RUN npm ci --only=production
 
-COPY --from=builder /${SERVICE_NAME}/idl ./idl
 COPY --from=builder /${SERVICE_NAME}/dist ./dist
 
 EXPOSE 8080

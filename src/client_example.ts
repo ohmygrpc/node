@@ -1,6 +1,5 @@
-import 'module-alias/register';
 import { ChannelCredentials } from '@grpc/grpc-js';
-import { EchoServiceClient } from '@idl/echo/v1/echo';
+import { EchoServiceClient } from './idl/services/echo/v1/echo';
 
 const cli = new EchoServiceClient(
   'dns:///localhost:8080',
