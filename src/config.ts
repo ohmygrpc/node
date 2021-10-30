@@ -14,16 +14,26 @@ function mustAtoi(s: string): number {
   return i;
 }
 
-export const settings: Map<string, any> = new Map<string, any>([
-  ['grpcServerPort', getEnv('GRPC_SERVER_PORT', '8080')],
-  ['statsdUdpPort', getEnv('STATSD_UDP_PORT', '8125')],
+export interface Settings {
+  Env: string;
+  SubEnvId: string;
+  Namespace: string;
 
-  ['env', getEnv('ENV', 'development')],
-  ['subEnvId', getEnv('SUB_ENV_ID', 'local')],
-  ['namespace', getEnv('NAMESPACE', 'development-local')],
+  GrpcServerPort: string;
+  StatsdUdpPort: string;
 
-  [
-    'gracefulShutdownTimeoutMs',
-    mustAtoi(getEnv('GRACEFUL_SHUTDOWN_TIMEOUT_MS', '10000')),
-  ],
-]);
+  GracefulShutdownTimeoutMs: number;
+}
+
+export const settings: Settings = {
+  Env: getEnv('ENV', 'development'),
+  SubEnvId: getEnv('SUB_ENV_ID', 'local'),
+  Namespace: getEnv('NAMESPACE', 'development-local'),
+
+  GrpcServerPort: getEnv('GRPC_SERVER_PORT', '8080'),
+  StatsdUdpPort: getEnv('STATSD_UDP_PORT', '8125'),
+
+  GracefulShutdownTimeoutMs: mustAtoi(
+    getEnv('GRACEFUL_SHUTDOWN_TIMEOUT_MS', '10000'),
+  ),
+};

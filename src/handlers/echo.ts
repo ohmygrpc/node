@@ -1,23 +1,12 @@
-import {
-  sendUnaryData,
-  ServerUnaryCall,
-} from '@grpc/grpc-js/build/src/server-call';
+import { EchoRequest, EchoResponse } from '@idl/echo/v1/echo';
+import { Context } from '../types';
 
-type EchoRequestType = {
-  msg: string;
-};
-type EchoResponseType = {
-  msg: string;
-};
+export async function echo(
+  ctx: Context<EchoRequest, EchoResponse>,
+): Promise<void> {
+  const {
+    req: { msg },
+  } = ctx;
 
-export function echo(
-  call: ServerUnaryCall<EchoRequestType, EchoResponseType>,
-  callback: sendUnaryData<EchoResponseType>,
-) {
-  const req = call.request;
-  const msg = req.msg;
-
-  callback(null, {
-    msg,
-  });
+  ctx.res = { msg };
 }
