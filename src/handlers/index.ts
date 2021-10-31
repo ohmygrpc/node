@@ -1,13 +1,8 @@
-import { EchoServiceService } from '@ohmygrpc/idl/services/echo/v1/echo';
-
-import { Handler } from '~types';
-
 import { echo } from './echo';
 import { healthCheck } from './healthCheck';
+import type { Handlers } from './types';
 
-type Handlers = {
-  [k in keyof typeof EchoServiceService]: Handler<any, any>;
-};
+export * from './types';
 
 // check unimplemented handler exist
 export const handlers: Handlers = {

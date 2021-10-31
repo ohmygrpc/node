@@ -1,12 +1,12 @@
 import { EchoServiceService } from '@ohmygrpc/idl/services/echo/v1/echo';
 import Mali from 'mali';
 
-import { AppContext, Context, Handler } from '~types';
-
+import type { AppContext, Context } from './context';
 import { unhandledErrorHandler } from './error';
+import type { Handler } from './handlers';
 import { handlers } from './handlers';
 import { stdoutUnaryServerInterceptor } from './interceptors';
-import { Logger } from './logger';
+import type { Logger } from './logger';
 
 export const initializeGrpcServer = (logger: Logger): Mali<AppContext> => {
   const app = new Mali<AppContext>(EchoServiceService, 'EchoService');

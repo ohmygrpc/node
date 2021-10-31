@@ -1,4 +1,5 @@
 import { ChannelCredentials } from '@grpc/grpc-js';
+import type { EchoResponse } from '@ohmygrpc/idl/services/echo/v1/echo';
 import { EchoServiceClient } from '@ohmygrpc/idl/services/echo/v1/echo';
 
 const cli = new EchoServiceClient(
@@ -9,7 +10,7 @@ const cli = new EchoServiceClient(
 // npm run start:dev 로 서버 띄우고 아래 명령어로 실행하면 됩니다.
 // npx ts-node src/client_example.ts
 const run = async () => {
-  const ret = await new Promise((resolve, reject) => {
+  const ret = await new Promise<EchoResponse>((resolve, reject) => {
     cli.echo({ msg: 'Hello' }, (err, resp) =>
       err ? reject(err) : resolve(resp),
     );
