@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "gRPC node.js server boilerplate",
   "scripts": {
+    "postinstall": "npm run idl:init",
     "prebuild": "rm -rf dist",
     "build": "babel src --out-dir dist --extensions '.ts' --source-maps true",
     "start": "node dist/index.js",
@@ -12,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "eslint '{src,test}/**/*.ts' --fix",
     "idl:init": "git submodule update --init",
-    "postidl:init": "ln -s `pwd`/idl/gen/node ./src/idl",
+    "postidl:init": "ln -sfh `pwd`/idl/gen/node/ ./src/idl",
     "idl:update": "git submodule update --remote --merge"
   },
   "keywords": [],
