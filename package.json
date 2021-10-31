@@ -12,7 +12,7 @@
     "lint": "eslint '{src,test}/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
     "format": "eslint '{src,test}/**/*.ts' --fix",
-    "preidl:init": "rm src/idl",
+    "preidl:init": "rm -rf src/idl",
     "idl:init": "git submodule update --init",
     "postidl:init": "ln -s `pwd`/idl/gen/node/ ./src/idl",
     "idl:update": "git submodule update --remote --merge"
