@@ -4,7 +4,7 @@ import Mali from 'mali';
 import { AppContext, Context, Handler } from '~types';
 
 import { unhandledErrorHandler } from './error';
-import * as handlers from './handlers';
+import { handlers } from './handlers';
 import { stdoutUnaryServerInterceptor } from './interceptors';
 import { Logger } from './logger';
 
@@ -17,8 +17,6 @@ export const initializeGrpcServer = (logger: Logger): Mali<AppContext> => {
   // interceptors
   app.use(stdoutUnaryServerInterceptor);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   app.use(wrap(handlers));
 
   app.on('error', unhandledErrorHandler(logger));

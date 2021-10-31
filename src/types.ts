@@ -16,4 +16,6 @@ export interface Context<Request, Response> extends App {
   res: Response;
 }
 
-export type Handler<T, R> = (ctx: Context<T, R>) => Promise<R>;
+export type Handler<Request, Response> = (
+  ctx: Context<Request, Response>,
+) => Promise<Response>;
