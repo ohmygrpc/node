@@ -5,9 +5,10 @@ ENV SERVICE_NAME=node
 
 WORKDIR /${SERVICE_NAME}
 COPY package*.json ./
+RUN npm ci --ignore-scripts
 
 COPY . .
-RUN npm ci
+RUN npm run postinstall
 RUN npm run build
 
 
