@@ -1,4 +1,4 @@
 [submodule "idl"]
 	path = idl
-	url = git@github.com:ohmygrpc/idl.git
+	url = https://github.com/ohmygrpc/idl.git
 	branch = main

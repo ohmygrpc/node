@@ -11,20 +11,15 @@
     "lint": "eslint '{src,test}/**/*.ts'",
     "format": "eslint '{src,test}/**/*.ts' --fix",
     "idl:init": "git submodule update --init",
-    "idl:update": "git submodule update --remote --merge",
-    "pregenerate:idl": "docker build . -f Dockerfile.buf -t ohmygrpc/buf:local",
-    "generate:idl": "docker run --volume `pwd`:/go/src/github.com/ohmygrpc/node --workdir /go/src/github.com/ohmygrpc/node ohmygrpc/buf:local generate idl"
+    "postidl:init": "ln -s `pwd`/idl/gen/node ./src/idl",
+    "idl:update": "git submodule update --remote --merge"
   },
   "keywords": [],
   "author": "Taeho Kim <taeho@taeho.io>",
-  "_moduleAliases": {
-    "@idl": "dist/__proto__/services"
-  },
   "dependencies": {
     "@grpc/grpc-js": "^1.2.8",
     "@grpc/proto-loader": "^0.5.6",
-    "mali": "^0.44.4",
-    "module-alias": "^2.2.2"
+    "mali": "^0.44.4"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",

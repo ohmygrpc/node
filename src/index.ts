@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import { settings } from './config';
 import { ConsoleLogger as Logger } from './logger';
 import { initializeGrpcServer } from './server';
