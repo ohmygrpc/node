@@ -17,9 +17,12 @@ export interface Context<Request, Response> extends App {
   res: Response;
 }
 
-export const mockContext = <Request, Response>(req: Request) => {
+export const mockContext = <Request, Response>(
+  req: Request,
+  { logger = NoopLogger() } = {},
+) => {
   return {
     req,
-    app: { context: { logger: NoopLogger() } },
+    app: { context: { logger } },
   } as Context<Request, Response>;
 };
