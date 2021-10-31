@@ -54,3 +54,12 @@ export const ConsoleLogger: () => Logger = () => {
     },
   };
 };
+
+const noop: () => void = () => undefined;
+
+export const NoopLogger: () => Logger = () => ({
+  debug: noop,
+  info: noop,
+  warn: noop,
+  error: noop,
+});

@@ -1,6 +1,7 @@
 import type { Context as MaliContext } from 'mali';
 
-import { Logger } from './logger';
+import type { Logger } from './logger';
+import { NoopLogger } from './logger';
 
 export interface AppContext {
   logger: Logger;
@@ -15,3 +16,10 @@ export interface Context<Request, Response> extends App {
   req: Request;
   res: Response;
 }
+
+export const mockContext = <Request, Response>(req: Request) => {
+  return {
+    req,
+    app: { context: { logger: NoopLogger() } },
+  } as Context<Request, Response>;
+};

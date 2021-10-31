@@ -1,6 +1,9 @@
-import { EchoRequest, EchoResponse } from '@ohmygrpc/idl/services/echo/v1/echo';
+import type {
+  EchoRequest,
+  EchoResponse,
+} from '@ohmygrpc/idl/services/echo/v1/echo';
 
-import { mockContext } from '../context.spec';
+import { mockContext } from '../context';
 import { echo } from './echo';
 
 describe('echo', () => {
