@@ -32,8 +32,11 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
-      - name: Lint
+      - name: ESLint
         run: npm run lint
+
+      - name: Typescript
+        run: npx tsc
 
   build:
     runs-on: ubuntu-20.04

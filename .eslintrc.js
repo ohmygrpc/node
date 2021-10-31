@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint/eslint-plugin',
     'simple-import-sort',
+    'jest',
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -20,7 +21,8 @@ module.exports = {
   },
   ignorePatterns: [
     '.eslintrc.js',
-    '**/idl/**/*.ts',
+    'jest.config.js',
+    'idl/**/*.ts',
   ],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',
