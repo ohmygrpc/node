@@ -1,6 +1,5 @@
 import { EchoServiceService } from '@ohmygrpc/idl/services/echo/v1/echo';
 import Mali from 'mali';
-
 import { unhandledErrorHandler } from './error';
 import * as handlers from './handlers';
 import { stdoutUnaryServerInterceptor } from './interceptors';
@@ -20,5 +19,5 @@ export const initializeGrpcServer = (logger: Logger): Mali<AppContext> => {
 
   app.on('error', unhandledErrorHandler(logger));
 
-  return app;
+  return app
 };
