@@ -3,10 +3,11 @@ import {
   HealthCheckResponse,
 } from '@ohmygrpc/idl/services/echo/v1/echo';
 
-import { Context } from '../types';
+import { Handler } from '~types';
 
-export async function healthCheck(
-  ctx: Context<HealthCheckRequest, HealthCheckResponse>,
-): Promise<void> {
-  ctx.res = {};
-}
+export const healthCheck: Handler<
+  HealthCheckRequest,
+  HealthCheckResponse
+> = async () => {
+  return {};
+};

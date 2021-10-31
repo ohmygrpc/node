@@ -21,7 +21,8 @@
           "."
         ],
         "alias": {
-          "@ohmygrpc/idl": "./src/idl"
+          "@ohmygrpc/idl": "./src/idl",
+          "~types": "./src/types"
         }
       }
     ]

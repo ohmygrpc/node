@@ -1,13 +1,11 @@
 import { EchoRequest, EchoResponse } from '@ohmygrpc/idl/services/echo/v1/echo';
 
-import { Context } from '../types';
+import { Handler } from '~types';
 
-export async function echo(
-  ctx: Context<EchoRequest, EchoResponse>,
-): Promise<void> {
+export const echo: Handler<EchoRequest, EchoResponse> = async (ctx) => {
   const {
     req: { msg },
   } = ctx;
 
-  ctx.res = { msg };
-}
+  return { msg };
+};

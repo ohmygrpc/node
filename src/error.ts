@@ -1,8 +1,9 @@
 import { status } from '@grpc/grpc-js';
 import { Context } from 'mali';
 
+import { AppContext } from '~types';
+
 import { Logger } from './logger';
-import { AppContext } from './types';
 
 export class GrpcError extends Error {
   constructor(public status: status, message: string) {
