@@ -1,8 +1,9 @@
-import { Context } from '../types';
 import {
   HealthCheckRequest,
   HealthCheckResponse,
-} from '../idl/services/echo/v1/echo';
+} from '@ohmygrpc/idl/services/echo/v1/echo';
+
+import { Context } from '../types';
 
 export async function healthCheck(
   ctx: Context<HealthCheckRequest, HealthCheckResponse>,

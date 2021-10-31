@@ -1,5 +1,5 @@
 import { ChannelCredentials } from '@grpc/grpc-js';
-import { EchoServiceClient } from './idl/services/echo/v1/echo';
+import { EchoServiceClient } from '@ohmygrpc/idl/services/echo/v1/echo';
 
 const cli = new EchoServiceClient(
   'dns:///localhost:8080',

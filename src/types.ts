@@ -1,4 +1,5 @@
 import { Context as MaliContext } from 'mali';
+
 import { Logger } from './logger';
 
 export interface AppContext {

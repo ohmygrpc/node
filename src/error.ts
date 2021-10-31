@@ -1,5 +1,6 @@
 import { status } from '@grpc/grpc-js';
 import { Context } from 'mali';
+
 import { Logger } from './logger';
 import { AppContext } from './types';
 
