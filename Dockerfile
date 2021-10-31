@@ -18,7 +18,7 @@ ENV SERVICE_NAME=node
 WORKDIR /${SERVICE_NAME}
 
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --only=production --ignore-scripts
 
 COPY --from=builder /${SERVICE_NAME}/dist ./dist
 
