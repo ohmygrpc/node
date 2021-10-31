@@ -35,10 +35,6 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Print help message
-        if: failure()
-        run: echo "Run \"npm run lint:fix\" in your local and push again"
-
   build:
     runs-on: ubuntu-20.04
     steps:
