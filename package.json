@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "gRPC node.js server boilerplate",
   "scripts": {
-    "postinstall": "npm run idl:init",
     "prebuild": "rm -rf dist",
     "build": "babel src --out-dir dist --extensions '.ts' --source-maps true",
     "start": "node dist/index.js",

@@ -30,7 +30,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install Node.js dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm run idl:init
 
       - name: ESLint
         run: npm run lint
@@ -60,7 +62,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install Node.js dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm run idl:init
 
       - name: Test
         run: npm test

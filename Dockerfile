@@ -5,10 +5,10 @@ ENV SERVICE_NAME=node
 
 WORKDIR /${SERVICE_NAME}
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm ci
 
 COPY . .
-RUN npm run postinstall
+RUN npm run idl:init
 RUN npm run build
 
 
@@ -19,7 +19,7 @@ ENV SERVICE_NAME=node
 WORKDIR /${SERVICE_NAME}
 
 COPY package*.json ./
-RUN npm ci --only=production --ignore-scripts
+RUN npm ci --only=production
 
 COPY --from=builder /${SERVICE_NAME}/dist ./dist
 
