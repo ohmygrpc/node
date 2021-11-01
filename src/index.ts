@@ -10,6 +10,7 @@ async function main() {
   logger.info(`Start gRPC Server on port ${settings.GrpcServerPort}`);
 
   process.once('SIGTERM', async () => {
+    logger.info('Waiting graceful shutdown');
     await new Promise((resolve) =>
       setTimeout(resolve, settings.GracefulShutdownTimeoutMs),
     );
