@@ -5,7 +5,5 @@
   ],
   "exec": "babel-node --extensions '.ts' src/index.ts",
   "ext": "ts",
-  "ignore": [
-    "node_modules"
-  ]
+  "signal": "SIGTERM"
 }
