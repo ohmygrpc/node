@@ -1,10 +1,11 @@
 import { status } from '@grpc/grpc-js';
 import { performance } from 'perf_hooks';
+
+import type { Context } from '../context';
 import { GrpcError } from '../error';
-import { App as Context } from '../types';
 
 export async function stdoutUnaryServerInterceptor(
-  ctx: Context,
+  ctx: Context<unknown, unknown>,
   next: () => Promise<void>,
 ): Promise<void> {
   const {

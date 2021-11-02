@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "extensions": [
+          ".ts"
+        ],
+        "root": [
+          "."
+        ],
+        "alias": {
+          "@ohmygrpc/idl": "./src/idl"
+        }
+      }
+    ]
+  ],
+  "ignore": ["**/*.spec.ts"]
+}
