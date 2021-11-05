@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.17.3 as builder
+FROM golang:1.17.3 as builder
 
 ENV ORG_NAME=ohmygrpc
 ENV SERVICE_NAME=echo
