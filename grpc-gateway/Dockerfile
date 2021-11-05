@@ -7,14 +7,16 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
 WORKDIR /${SERVICE_NAME}
-
 COPY . .
-RUN make build
 
-WORKDIR /${SERVICE_NAME}/bin
+WORKDIR /${SERVICE_NAME}/cmd
 
-RUN if [ "$BUILDPLATFORM" = "linux/amd64" ]; then mv ${SERVICE_NAME}.linux.amd64 ${SERVICE_NAME} ; fi
-RUN if [ "$BUILDPLATFORM" = "linux/arm64" ]; then mv ${SERVICE_NAME}.linux.arm64 ${SERVICE_NAME} ; fi
+RUN echo "$BUILDPLATFORM"
+
+RUN CGO_ENABLED=0 \
+    GOOS=$(echo "$BUILDPLATFORM" | cut -d '/' -f1) \
+    GOARCH=$(echo "$BUILDPLATFORM" | cut -d '/' -f2) \
+    go build -a -installsuffix cgo -ldflags="-w -s" -o /${SERVICE_NAME}/bin/${SERVICE_NAME}
 
 
 FROM --platform=$BUILDPLATFORM gcr.io/distroless/base
