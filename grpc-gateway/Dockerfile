@@ -20,7 +20,7 @@ RUN CGO_ENABLED=0 \
     go build -a -installsuffix cgo -ldflags="-w -s" -o /${SERVICE_NAME}/bin/${SERVICE_NAME}
 
 
-FROM --platform=$BUILDPLATFORM gcr.io/distroless/base
+FROM --platform=$TARGETPLATFORM gcr.io/distroless/base
 
 ENV ORG_NAME=ohmygrpc
 ENV SERVICE_NAME=echo
