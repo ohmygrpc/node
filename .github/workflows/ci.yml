@@ -105,7 +105,7 @@ jobs:
             ghcr.io/${{ env.ORG_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
 
   build-grpc-gateway:
-    name: Build and Push
+    name: Build and Push (grpc-gateway)
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -153,7 +153,7 @@ jobs:
             ghcr.io/${{ env.ORG_NAME }}/${{ env.SERVICE_NAME }}:grpc-gateway-${{ github.sha }}
 
   lint-grpc-gateway:
-    name: Lint
+    name: Lint (grpc-gateway)
     runs-on: ubuntu-20.04
     steps:
       - name: Set up Go 1.17
@@ -184,7 +184,7 @@ jobs:
         working-directory: grpc-gateway
 
   unit-grpc-gateway:
-    name: Unit tests
+    name: Unit tests (grpc-gateway)
     runs-on: ubuntu-20.04
     steps:
       - name: Set up Go 1.17
