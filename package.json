@@ -18,7 +18,7 @@
     "postidl:update": "git submodule status idl | awk '{print $1}' | (read IDL_COMMIT_HASH; cd grpc-gateway && go get github.com/ohmygrpc/idl@$IDL_COMMIT_HASH)"
   },
   "keywords": [],
-  "author": "Taeho Kim <taeho@taeho.io>",
+  "author": "Jiwoong Jung <kanziwoong@gmail.com>",
   "dependencies": {
     "@grpc/grpc-js": "^1.2.8",
     "@grpc/proto-loader": "^0.5.6",
