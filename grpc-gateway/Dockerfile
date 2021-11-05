@@ -11,11 +11,12 @@ COPY . .
 
 WORKDIR /${SERVICE_NAME}/cmd
 
-RUN echo "$BUILDPLATFORM"
+RUN echo "BUILDPLATFORM -> $BUILDPLATFORM"
+RUN echo "TARGETPLATFORM -> $TARGETPLATFORM"
 
 RUN CGO_ENABLED=0 \
-    GOOS=$(echo "$BUILDPLATFORM" | cut -d '/' -f1) \
-    GOARCH=$(echo "$BUILDPLATFORM" | cut -d '/' -f2) \
+    GOOS=$(echo "$TARGETPLATFORM" | cut -d '/' -f1) \
+    GOARCH=$(echo "$TARGETPLATFORM" | cut -d '/' -f2) \
     go build -a -installsuffix cgo -ldflags="-w -s" -o /${SERVICE_NAME}/bin/${SERVICE_NAME}
 
 
