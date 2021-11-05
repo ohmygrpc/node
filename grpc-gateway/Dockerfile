@@ -11,9 +11,6 @@ COPY . .
 
 WORKDIR /${SERVICE_NAME}/cmd
 
-RUN echo "BUILDPLATFORM -> $BUILDPLATFORM"
-RUN echo "TARGETPLATFORM -> $TARGETPLATFORM"
-
 RUN CGO_ENABLED=0 \
     GOOS=$(echo "$TARGETPLATFORM" | cut -d '/' -f1) \
     GOARCH=$(echo "$TARGETPLATFORM" | cut -d '/' -f2) \
