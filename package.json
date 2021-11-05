@@ -5,7 +5,9 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "babel src --out-dir dist --extensions '.ts' --source-maps true",
-    "start": "nodemon",
+    "start": "concurrently \"npm run start:*\"",
+    "start:grpc": "nodemon",
+    "start:grpc-gateway": "cd grpc-gateway && make run",
     "test": "jest",
     "lint": "eslint '{src,test}/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
@@ -33,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^6.3.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-jest": "^25.2.2",
