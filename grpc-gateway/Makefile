@@ -25,21 +25,20 @@ format:
 .PHONY: test
 ## test: run tests
 test:
-	@go get github.com/rakyll/gotest
+	@go install github.com/rakyll/gotest@v0.0.6
 	gotest -p 1 -race -cover -v ./...
 
 .PHONY: coverage
 ## coverage: run tests with coverage
 coverage:
-	@go get github.com/rakyll/gotest
+	@go install github.com/rakyll/gotest@v0.0.6
 	gotest -p 1 -race -coverprofile=coverage.txt -covermode=atomic -v ./...
 
 .PHONY: lint
 ## lint: check everything's okay
 lint:
-	@go get github.com/kyoh86/scopelint
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.43.0
 	golangci-lint run ./...
-	scopelint --set-exit-status ./...
 	go mod verify
 
 .PHONY: generate

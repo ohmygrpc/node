@@ -2,13 +2,14 @@ package main
 
 import (
 	"context"
-	"github.com/ohmygrpc/node/grpc-gateway/config"
-	"github.com/ohmygrpc/node/grpc-gateway/server"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/ohmygrpc/node/grpc-gateway/config"
+	"github.com/ohmygrpc/node/grpc-gateway/server"
 
 	"github.com/sirupsen/logrus"
 )
