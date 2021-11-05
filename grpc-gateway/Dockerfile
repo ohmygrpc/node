@@ -6,8 +6,12 @@ ENV SERVICE_NAME=echo
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
+WORKDIR /${SERVICE_NAME}
+
+COPY . .
+RUN make build
+
 WORKDIR /${SERVICE_NAME}/bin
-COPY ./bin ./
 
 RUN if [ "$BUILDPLATFORM" = "linux/amd64" ]; then mv ${SERVICE_NAME}.linux.amd64 ${SERVICE_NAME} ; fi
 RUN if [ "$BUILDPLATFORM" = "linux/arm64" ]; then mv ${SERVICE_NAME}.linux.arm64 ${SERVICE_NAME} ; fi

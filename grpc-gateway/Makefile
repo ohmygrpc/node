@@ -1,5 +1,5 @@
 GOPATH:=$(shell go env GOPATH)
-ORG_NAME?=grpc-gateway
+ORG_NAME?=ohmygrpc
 SERVICE_NAME?=echo
 
 .PHONY: build
