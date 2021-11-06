@@ -8,8 +8,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/ohmygrpc/node/grpc-gateway/config"
-	"github.com/ohmygrpc/node/grpc-gateway/server"
+	"github.com/ohmygrpc/node/grpcgateway/config"
+	"github.com/ohmygrpc/node/grpcgateway/server"
 
 	"github.com/sirupsen/logrus"
 )

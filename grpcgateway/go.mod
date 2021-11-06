@@ -1,4 +1,4 @@
-module github.com/ohmygrpc/node/grpc-gateway
+module github.com/ohmygrpc/node/grpcgateway
 
 go 1.17
 

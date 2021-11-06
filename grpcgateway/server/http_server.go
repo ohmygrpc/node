@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 
 	echov1 "github.com/ohmygrpc/idl/gen/go/services/echo/v1"
-	"github.com/ohmygrpc/node/grpc-gateway/config"
+	"github.com/ohmygrpc/node/grpcgateway/config"
 )
 
 func NewHTTPServer(ctx context.Context, cfg config.Config) (*http.Server, error) {

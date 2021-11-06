@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist --extensions '.ts' --source-maps true",
     "start": "concurrently \"npm run start:*\"",
     "start:grpc": "nodemon",
-    "start:grpc-gateway": "cd grpc-gateway && make run",
+    "start:grpcgateway": "cd grpcgateway && make run",
     "test": "jest",
     "lint": "eslint '{src,test}/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
@@ -15,7 +15,7 @@
     "idl:init": "git submodule update --init",
     "postidl:init": "rm -rf src/idl && ln -s `pwd`/idl/gen/node/ src/idl",
     "idl:update": "git submodule update --remote --merge",
-    "postidl:update": "git submodule status idl | awk '{print $1}' | (read IDL_COMMIT_HASH; cd grpc-gateway && go get github.com/ohmygrpc/idl@$IDL_COMMIT_HASH)"
+    "postidl:update": "git submodule status idl | awk '{print $1}' | (read IDL_COMMIT_HASH; cd grpcgateway && go get github.com/ohmygrpc/idl@$IDL_COMMIT_HASH)"
   },
   "keywords": [],
   "author": "Jiwoong Jung <kanziwoong@gmail.com>",
