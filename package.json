@@ -5,17 +5,20 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "babel src --out-dir dist --extensions '.ts' --source-maps true",
-    "start": "nodemon",
+    "start": "concurrently \"npm run start:*\"",
+    "start:grpc": "nodemon",
+    "start:grpcgateway": "cd grpcgateway && make run",
     "test": "jest",
     "lint": "eslint '{src,test}/**/*.ts'",
     "lint:fix": "npm run lint -- --fix",
     "format": "eslint '{src,test}/**/*.ts' --fix",
     "idl:init": "git submodule update --init",
     "postidl:init": "rm -rf src/idl && ln -s `pwd`/idl/gen/node/ src/idl",
-    "idl:update": "git submodule update --remote --merge"
+    "idl:update": "git submodule update --remote --merge",
+    "postidl:update": "git submodule status idl | awk '{print $1}' | (read IDL_COMMIT_HASH; cd grpcgateway && go get github.com/ohmygrpc/idl@$IDL_COMMIT_HASH)"
   },
   "keywords": [],
-  "author": "Taeho Kim <taeho@taeho.io>",
+  "author": "Jiwoong Jung <kanziwoong@gmail.com>",
   "dependencies": {
     "@grpc/grpc-js": "^1.2.8",
     "@grpc/proto-loader": "^0.5.6",
@@ -33,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "babel-plugin-module-resolver": "^4.1.0",
+    "concurrently": "^6.3.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-jest": "^25.2.2",
