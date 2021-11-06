@@ -1,7 +1,7 @@
 FROM golang:1.17.3 as builder
 
 ENV ORG_NAME=ohmygrpc
-ENV SERVICE_NAME=echo
+ENV SERVICE_NAME=node
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -16,7 +16,7 @@ RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then mv ${SERVICE_NAME}.linux.arm6
 FROM --platform=$TARGETPLATFORM gcr.io/distroless/base
 
 ENV ORG_NAME=ohmygrpc
-ENV SERVICE_NAME=echo
+ENV SERVICE_NAME=node
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM

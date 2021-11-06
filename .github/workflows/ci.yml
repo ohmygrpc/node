@@ -108,6 +108,11 @@ jobs:
     name: Build and Push (grpc-gateway)
     runs-on: ubuntu-20.04
     steps:
+      - name: Set up Go 1.17
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -138,9 +143,9 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Build golang executables
+        working-directory: grpc-gateway
         run: |
           make build
-        working-directory: grpc-gateway
 
       - name: Build and push
         uses: docker/build-push-action@v2

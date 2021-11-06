@@ -1,6 +1,6 @@
 GOPATH:=$(shell go env GOPATH)
 ORG_NAME?=ohmygrpc
-SERVICE_NAME?=echo
+SERVICE_NAME?=node
 
 .PHONY: build
 ## build: build the application(api)
